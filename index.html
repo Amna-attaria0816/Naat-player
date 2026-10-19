@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Naat Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="./icons8-musical-note-100.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <p class="bismillah" lang="ar" dir="rtl">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+
+  <main class="app">
+
+    <section class="player" id="player" aria-label="Now playing">
+      <div class="cd-wrap" aria-hidden="true"><div class="cd"></div></div>
+
+      <div class="info">
+        <h1 id="title">No naat selected</h1>
+        <p id="artist">Add a file to begin</p>
+        <p class="status" id="status" role="status"></p>
+      </div>
+
+      <div class="seek">
+        <span id="cur">0:00</span>
+        <input type="range" id="seek" min="0" max="1000" value="0" aria-label="Seek">
+        <span id="dur">0:00</span>
+      </div>
+
+      <div class="controls">
+        <button class="ctl" id="prev" aria-label="Previous naat">
+          <svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9.5 12z"/></svg>
+        </button>
+        <button class="ctl big" id="play" aria-label="Play">
+          <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+        </button>
+        <button class="ctl" id="next" aria-label="Next naat">
+          <svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5v14l10.5-7z"/></svg>
+        </button>
+      </div>
+
+      <div class="extras">
+        <div class="volume">
+          <button class="ctl small" id="mute" aria-label="Mute">
+            <svg class="i-vol" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9zM16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg class="i-mute" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9zM16 9l5 6M21 9l-5 6" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </button>
+          <input type="range" id="volume" min="0" max="100" value="80" aria-label="Volume">
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="autoplay" checked>
+          <span class="track"></span>
+          Autoplay next
+        </label>
+      </div>
+    </section>
+
+    <aside class="playlist" aria-label="Playlist">
+      <h2>Playlist</h2>
+      <p class="empty" id="empty">No naats yet. Choose audio files from your device to start listening.</p>
+      <ol id="list"></ol>
+      <input type="file" id="files" accept="audio/*" multiple hidden>
+      <button class="add" id="addBtn">+ Add naats from your device</button>
+    </aside>
+
+  </main>
+
+  <audio id="audio" preload="metadata"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
